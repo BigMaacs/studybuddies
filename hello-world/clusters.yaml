@@ -3,5 +3,5 @@
     configmap: controller-conf
     namespace: hasura
   data: null
-  kubeContext: pickerel35
-  name: pickerel35
+  kubeContext: cottony80
+  name: cottony80
