@@ -13,7 +13,7 @@ class SignupForm extends Component {
       iKnowInput: '',
       iWantInput: '',
       iKnowList: [],
-      iWantList: []
+      iWantList: [],
     }
   }
 
@@ -61,18 +61,18 @@ class SignupForm extends Component {
     return (
       <Row className="signup-ctn">
 
-        <Col s={8} className="signup-form">
+        <Col s={12} className="signup-form">
 
-          <Row>
-            <Input placeholder="Username" s={4} label="Username" value={username} onChange={this.onChange} id="username"/>
-            <Input placeholder="Email" type="email" label="Email" s={4} value={email} onChange={this.onChange} id="email"/>
+          <Row className="signup-form-row">
+            <Input placeholder="Username" s={5} label="Username" value={username} onChange={this.onChange} id="username"/>
+            <Input placeholder="Email" type="email" label="Email" s={5} value={email} onChange={this.onChange} id="email"/>
           </Row>
-          <Row>
-            <Input placeholder="Password" type="password" label="Password" s={4} value={password} onChange={this.onChange} id="password"/>
-            <Input placeholder="Confirm Password" type="password" label="Confirm Password" s={4} value={confirmPassword} onChange={this.onChange} id="confirmPassword"/>
+          <Row className="signup-form-row">
+            <Input placeholder="Password" type="password" label="Password" s={5} value={password} onChange={this.onChange} id="password"/>
+            <Input placeholder="Confirm Password" type="password" label="Confirm Password" s={5} value={confirmPassword} onChange={this.onChange} id="confirmPassword"/>
           </Row>
 
-          <Row>
+          <Row className="signup-form-row">
             <Autocomplete
               title='What I know'
               id='iKnowInput'
@@ -103,14 +103,14 @@ class SignupForm extends Component {
               onChange={this.onChange}
             />
           </Row>
-          <Row>
-            <Col s={4}>
-              <Collection header="I can teach">
+          <Row className="signup-form-row">
+            <Col s={5}>
+              <Collection header="I can teach:">
                 {iKnowList.map((item) => <CollectionItem>{item}</CollectionItem>)}
               </Collection>
             </Col>
-            <Col s={4}>
-              <Collection header="I want to learn">
+            <Col s={5}>
+              <Collection className={"Collection"} header="I want to learn:">
                 {iWantList.map((item) => <CollectionItem>{item}</CollectionItem>)}
               </Collection>
             </Col>

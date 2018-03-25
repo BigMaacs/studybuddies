@@ -5,24 +5,48 @@ import './Session.css';
 export default class Session extends PureComponent {
   static propTypes = {
     session: PropTypes.object,
+    history: PropTypes.object,  
   }
 
   static defaultProp = {
     session: {},
   }
 
-  renderActions() {
-    const { saved, live } = this.props.session
+  handleViewClick = () => {
+    this.props.history.push(`/session/:${this.props.session.id}`)
+  }
+
+  handleSaveToggle = () => {
+    this.props.session.status.saved = !this.props.session.status.saved
+  }
+
+    renderActions() {
+    const { saved, live } = this.props.session.status
     return (
       <div className="Session-Actions">
         { !saved &&
-          <button className="Session-actionButton">Save</button>
+          <button 
+            className="Session-actionButton" 
+            onClick={this.handleSaveToggle}
+          >
+            Save
+          </button>
         }
         { saved &&
-          <button className="Session-actionButton">Remove</button>
+          <button 
+            className="Session-actionButton"
+            onClick={this.handleRemoveToggle}
+          >
+            Remove
+          </button>
         }
         { !live &&
-          <button className="Session-actionButton">View</button>
+          <button 
+            className="Session-actionButton" 
+            onClick={this.handleViewClick}
+          >
+            Join Session
+          </button>
         }
       </div>
     )

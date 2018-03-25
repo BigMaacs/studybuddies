@@ -7,7 +7,8 @@ import './Layout.css';
 export default class Layout extends PureComponent {
   render() {
     const mockSessions = [
-      {
+      { 
+        id: 1,
         title: 'A Title One',
         description: 'Short description of video',
         category: 'React',
@@ -17,6 +18,7 @@ export default class Layout extends PureComponent {
         },
       },
       {
+        id: 2,
         title: 'A Title Two',
         description: 'Short description of video',
         category: 'React Native',
@@ -26,6 +28,7 @@ export default class Layout extends PureComponent {
         },
       },
       {
+        id: 3,
         title: 'A Title Three',
         description: 'Short description of video',
         category: 'Angular',
@@ -35,6 +38,7 @@ export default class Layout extends PureComponent {
         },
       },
       {
+        id: 4,
         title: 'A Title Four',
         description: 'Short description of video',
         category: 'MEAN Stack',
@@ -49,7 +53,7 @@ export default class Layout extends PureComponent {
         <div className="Top-Menu">
           <ToggleViews />
           <Filter />
-          <Sessions sessions={mockSessions}/>
+          <Sessions history={this.props.history} sessions={mockSessions}/>
         </div>
       </div>
     )
