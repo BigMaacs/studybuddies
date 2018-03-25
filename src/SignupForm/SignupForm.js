@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Row, Input, Autocomplete, Collection, CollectionItem, Col, Button} from 'react-materialize';
 import { AUTOCOMPLETE } from '../constants';
+import { connect } from 'react-redux';
+import { signupReq } from '../actions';
 import './SignupForm.css';
 
 class SignupForm extends Component {
@@ -45,6 +47,20 @@ class SignupForm extends Component {
         ]
       }
     });
+  }
+
+  signupClick = (e) => {
+    e.preventDefault();
+    const { username, email, iKnowList, iWantList } = this.state;
+    const userObj = {
+      username,
+      email,
+      loggedIn: true,
+      buddies: [],
+      iKnow: iKnowList,
+      iWant: iWantList
+    }
+    this.props.signupReq(userObj);
   }
 
   render() {
@@ -106,7 +122,7 @@ class SignupForm extends Component {
             </Col>
           </Row>
 
-          <Button waves='light' className="signup-btn">Signup</Button>
+          <Button waves='light' className="signup-btn" onClick={(e) => this.signupClick(e)}>Signup</Button>
 
         </Col>
       </Row>
@@ -114,4 +130,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+export default connect(null ,{ signupReq })(SignupForm);
