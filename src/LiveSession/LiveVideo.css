@@ -1,0 +1,12 @@
+.OT_publisher, .OT_subscriber {
+  height: 330px !important;
+}
+.OT_widget-container {
+  height: 400px;
+  overflow: auto;
+}
+
+.message {
+  width: 350px;
+  margin: 250px 500px;
+}
