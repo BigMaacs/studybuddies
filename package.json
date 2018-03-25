@@ -7,15 +7,19 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "graphiql": "^0.11.11",
     "react-scripts": "1.1.1"
   },
   "dependencies": {
     "ajv": "^6.3.0",
+    "apollo-boost": "^0.1.3",
+    "graphql": "^0.13.2",
     "react": "^16.2.0",
+    "react-apollo": "^2.1.0",
     "react-dom": "^16.2.0",
+    "react-dropdown": "^1.4.0",
     "react-materialize": "^2.1.2",
-    "react-router-dom": "^4.2.2",
-    "react-dropdown": "^1.4.0"
+    "react-router-dom": "^4.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

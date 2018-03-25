@@ -1,55 +1,37 @@
 import React, { PureComponent } from 'react';
 import ToggleViews from '../ToggleViews'
 import Filter from '../Filter'
-import Sessions from '../Sessions'
+import {Sessions} from '../Sessions'
 import './Layout.css';
 
 export default class Layout extends PureComponent {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedCategory: ''
+    }
+
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
+  }
+
+  handleCategoryChange(category) {
+    if (category) {
+      this.setState({
+        selectedCategory: { id: category.value, name: category.label }
+      })
+    }
+  }
+
   render() {
-    const mockSessions = [
-      {
-        title: 'A Title One',
-        description: 'Short description of video',
-        category: 'React',
-        status: {
-          live: true,
-          saved: false,
-        },
-      },
-      {
-        title: 'A Title Two',
-        description: 'Short description of video',
-        category: 'React Native',
-        status: {
-          live: true,
-          saved: true,
-        },
-      },
-      {
-        title: 'A Title Three',
-        description: 'Short description of video',
-        category: 'Angular',
-        status: {
-          live: false,
-          saved: true,
-        },
-      },
-      {
-        title: 'A Title Four',
-        description: 'Short description of video',
-        category: 'MEAN Stack',
-        status: {
-          live: false,
-          saved: false,
-        },
-      },
-    ]
+    const { selectedCategory } = this.state
+
     return (
       <div className="Layout-Container">
         <div className="Top-Menu">
           <ToggleViews />
-          <Filter />
-          <Sessions sessions={mockSessions}/>
+          <Filter onChange={this.handleCategoryChange} />
+          <Sessions selectedCategory={this.state.selectedCategory} />
         </div>
       </div>
     )

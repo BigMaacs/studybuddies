@@ -1,12 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
+import { graphql, Query } from 'react-apollo'
 import Session from './Session/Session'
+import { 
+  QUERY_ALL_SESSIONS,
+  QUERY_SESSION_BY_CATEGORY,
+} from './queries'
 import './Sessions.css';
 
-export default class Sessions extends PureComponent {
+class Sessions extends PureComponent {
   static propTypes = {
     selected: PropTypes.string,
-    sessions: PropTypes.array.isRequired,
+    data: PropTypes.object,
+    selectedCategory: PropTypes.object,
   }
 
   static defaultProp = {
@@ -14,15 +20,55 @@ export default class Sessions extends PureComponent {
   }
 
   renderSession() {
-    const { sessions } = this.props
-    return sessions.map((session, i) => <Session key={i} session={session} /> )
+    const { loading, error, session } = this.props.data
 
+    if (loading) {
+      return <p>Loading...</p>
+    } else if (error) {
+      return <p>Error loading sessions: {error.message}</p>
+    } else {
+      return session.map((s, i) => (<Session key={i} session={s} />))
+    }
   }
+
+  get queryProps() {
+    const { selectedCategory } = this.props
+    let queryProps = {
+      query: selectedCategory ?
+        QUERY_SESSION_BY_CATEGORY:
+        QUERY_ALL_SESSIONS
+    }
+
+    if (selectedCategory) {
+      queryProps.variables = {
+        categoryId: selectedCategory.id
+      }
+    }
+
+    return queryProps
+  }
+
+  reRenderSession({loading, error, data}) {
+    if (loading) {
+      return <p>Loading...</p>
+    } else if (error) {
+      return <p>Error loading sessions: {error.message}</p>
+    } 
+
+    return data.session.map((s, i) => (<Session key={i} session={s} />))
+  }
+
   render() {
     return (
       <div className="Sessions-Container">
-        { this.renderSession() }
+        <Query
+          {...this.queryProps}
+        >
+          { this.reRenderSession }
+        </Query>
       </div>
     )
   }
 }
+
+export default Sessions

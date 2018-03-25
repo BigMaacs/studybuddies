@@ -4,7 +4,6 @@ import { Navbar, NavItem } from 'react-materialize'
 import Layout from '../Layout'
 import SignupPage from '../SignupPage';
 
-
 export default class App extends Component {
   render() {
     return (
