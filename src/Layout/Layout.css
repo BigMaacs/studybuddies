@@ -1,3 +1,7 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .Layout-Container {
   display: flex;
   width: 100%;

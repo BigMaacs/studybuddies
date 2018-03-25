@@ -1,5 +1,6 @@
 const mockSessions = [
   {
+    id: 1,
     title: 'A Title One',
     description: 'Short description of video',
     category: 'React',
@@ -9,6 +10,7 @@ const mockSessions = [
     },
   },
   {
+    id: 2,
     title: 'A Title Two',
     description: 'Short description of video',
     category: 'React Native',
@@ -18,6 +20,7 @@ const mockSessions = [
     },
   },
   {
+    id: 3,
     title: 'A Title Three',
     description: 'Short description of video',
     category: 'Angular',
@@ -27,6 +30,7 @@ const mockSessions = [
     },
   },
   {
+    id: 4,
     title: 'A Title Four',
     description: 'Short description of video',
     category: 'MEAN Stack',

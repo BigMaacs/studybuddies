@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Navbar, NavItem, Button } from 'react-materialize';
 import { connect } from 'react-redux';
 import Layout from '../Layout'
-import SignupPage from '../SignupPage';
+import SignupPage from '../SignupPage'
+import LiveSession from '../LiveSession'
+import './NavBar.css'
 
 
 class App extends Component {
@@ -12,7 +14,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar brand='Studybuddies' right>
+          <Navbar className={"NavBar"}brand='Studybuddies' right>
             <NavItem href='/dashboard'>Dashboard</NavItem>
             {
               user.loggedIn && <Button>50 points</Button>
@@ -26,8 +28,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={SignupPage} />
             <Route exact path="/dashboard" component={Layout} />
+            <Route excat path="/session/:id" component={LiveSession} />
           </Switch>
-
         </div>
       </Router>
     );

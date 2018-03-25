@@ -11,7 +11,7 @@ export default class Layout extends PureComponent {
         <div className="Top-Menu">
           <ToggleViews />
           <Filter />
-          <Sessions/>
+          <Sessions history={this.props.history}/>
         </div>
       </div>
     )

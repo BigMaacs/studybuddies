@@ -8,6 +8,7 @@ class Sessions extends PureComponent {
   static propTypes = {
     selected: PropTypes.string,
     sessions: PropTypes.array.isRequired,
+    history: PropTypes.object,
   }
 
   static defaultProp = {
@@ -15,19 +16,23 @@ class Sessions extends PureComponent {
   }
 
   renderSession() {
+    const { history } = this.props;
+    console.log(history, 'history', this.props);
     const { iWant } = this.props.user;
     const { sessionsList, currentView } = this.props.sessions;
     if (currentView === 'AllSessions') {
-      return sessionsList.map((session, i) => <Session key={i} session={session} /> )
+      return sessionsList.map((session, i) => <Session key={i} session={session} history={history}/> )
     }
     if (currentView === 'LiveSessions') {
       return sessionsList.filter((session) => session.status.live).map((sess, i) => {
-        return <Session key={i} session={sess} />
+        return <Session key={i} session={sess} history={history}/>
       })
     }
     return sessionsList.filter((session) => iWant.includes(session.category)).map((sess, i) => {
-      return <Session key={i} session={sess}/>
+      return <Session key={i} session={sess} history={history}/>
     })
+    return sessionsList.map((session, i) => <Session key={i} session={session} history={history} /> )
+
   }
   render() {
     return (
