@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupForm from '../SignupForm/SignupForm';
+import SignupForm from '../SignupForm';
 import { Navbar, NavItem } from 'react-materialize'
 
 const SignupPage = () => {
