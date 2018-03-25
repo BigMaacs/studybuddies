@@ -2,10 +2,38 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  border: solid 1px;
 }
 
 .Toggle-Menu-Item {
   padding: 10px;
-  width: 33%;
+  width: 30%;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  border-radius: 20px 20px 0px 0px;
+  background-color: #f1eaea;
+  cursor: pointer;
+}
+
+label {
+  display: inline-block;
+  padding-left: 33%;
+  font-weight: 600;
+  text-align: center;
+  color: #1b1a1a;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.Toggle-Menu-Item:hover {
+  color: #888;
+}
+
+.Toggle-Menu-Item-Checked {
+  padding: 10px;
+  width: 30%;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+  border-radius: 20px 20px 0px 0px;
+  background-color: #f1eaea;
 }
