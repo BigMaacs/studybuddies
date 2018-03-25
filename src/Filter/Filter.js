@@ -5,7 +5,6 @@ import './Filter.css'
 
 export default class Filter extends PureComponent {
   onSelect() {
-    //set value to selected
     //trigger a filter by available categories
   }
 
