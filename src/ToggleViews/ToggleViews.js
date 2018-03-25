@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { toggleSessionView } from '../actions';
 import './ToggleViews.css'
 
-export default class ToggleViews extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      AllSessions: true,
-      LiveSessions: false,
-      MySessions: false,
-    }
-  }
+class ToggleViews extends Component {
 
   onSessionClick = (session) => {
-    const newState = {
-      AllSessions: false,
-      LiveSessions: false,
-      MySessions: false
-    } 
-    newState[session] = true 
-    this.setState({ ...newState }) 
+    this.props.toggleSessionView(session);
   }
 
   getClassname = (session) => {
-    console.log(this.state[session])
-    return this.state[session] ? 'Toggle-Menu-Item-Checked' : 'Toggle-Menu-Item'
+    return session === this.props.sessions.currentView ? 'Toggle-Menu-Item-Checked' : 'Toggle-Menu-Item'
   }
 
   filter = () => {
@@ -33,21 +20,24 @@ export default class ToggleViews extends Component {
   render() {
     return (
       <div className="Toggle-Container">
-        <div 
-          className={this.getClassname('AllSessions')} 
+        <div
+          className={this.getClassname('AllSessions')}
           onClick={(e) => this.onSessionClick(e.target.id)}
+          id={'AllSessions'}
         >
           <label id={'AllSessions'}>All Sessions</label>
         </div>
-        <div 
-          className={this.getClassname('LiveSessions')} 
+        <div
+          className={this.getClassname('LiveSessions')}
           onClick={(e) => this.onSessionClick(e.target.id)}
+          id={'LiveSessions'}
         >
           <label id={'LiveSessions'}>Live Sessions</label>
         </div>
-        <div 
-          className={this.getClassname('MySessions')} 
+        <div
+          className={this.getClassname('MySessions')}
           onClick={(e) => this.onSessionClick(e.target.id)}
+          id={'MySessions'}
         >
           <label id={'MySessions'}>My Sessions</label>
         </div>
@@ -55,3 +45,5 @@ export default class ToggleViews extends Component {
     )
   }
 }
+
+export default connect(({ sessions }) => ({ sessions }), { toggleSessionView })(ToggleViews);

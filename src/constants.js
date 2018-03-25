@@ -1,4 +1,4 @@
-export const CATEGORIES = [
+const CATEGORIES = [
   'HTML',
   'CSS',
   'JavaScript',
@@ -13,3 +13,6 @@ export const CATEGORIES = [
   'SQL',
   'Git'
 ];
+const AUTOCOMPLETE = {};
+CATEGORIES.forEach((cat) => AUTOCOMPLETE[cat] = null);
+export { CATEGORIES, AUTOCOMPLETE };
