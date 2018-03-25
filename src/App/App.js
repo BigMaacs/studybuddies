@@ -4,6 +4,7 @@ import { Navbar, NavItem } from 'react-materialize'
 import Layout from '../Layout'
 import SignupPage from '../SignupPage'
 import LiveSession from '../LiveSession'
+import './NavBar.css'
 
 
 export default class App extends Component {
@@ -11,7 +12,7 @@ export default class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar brand='Studybuddies' right>
+          <Navbar className={"NavBar"}brand='Studybuddies' right>
             <NavItem href='/dashboard'>Dashboard</NavItem>
             <NavItem href='/'>Login</NavItem>
           </Navbar>
@@ -20,7 +21,6 @@ export default class App extends Component {
             <Route exact path="/dashboard" component={Layout} />
             <Route excat path="/session/:id" component={LiveSession} />
           </Switch>
-
         </div>
       </Router>
     );

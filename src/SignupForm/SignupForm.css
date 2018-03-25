@@ -1,19 +1,36 @@
 .signup-ctn {
-  margin-top: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.signup-form {
-  width: 70% !important;
+  padding: 10px;
 }
 
 .signup-btn {
-  width: 65%;
+  width: 61%;
+  background-color: #246105;
+  border-color: #246105;
+  color: #fff;
+  margin-left: 26%;
+}
+
+.input-field.col label {
+  left: -6.75rem;
+}
+
+
+.signup-btn:hover {
+  background-color: #bef7a2;
 }
 
 .auto-input {
-  width: 33%;
+  width: 42%;
+}
+
+.signup-form-row {
+  margin-left: 25%;
+}
+
+.collection {
+  border-radius: 8px;
 }
