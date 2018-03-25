@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import NavBar from '../NavBar'
+import ToggleViews from '../ToggleViews'
+import Filter from '../Filter'
 import './Layout.css';
 
 export default class Layout extends PureComponent {
@@ -7,7 +8,8 @@ export default class Layout extends PureComponent {
     return (
       <div className="Layout-Container">
         <div className="Top-Menu">
-          <NavBar />
+          <ToggleViews />
+          <Filter />
         </div>
       </div>
     )
