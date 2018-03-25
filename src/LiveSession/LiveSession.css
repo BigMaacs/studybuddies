@@ -6,9 +6,9 @@
 }
 .LiveSession-Nav-Bar {
   width: 100%;
-  justify-content: space-between;
   height: 55px;
   border: solid 1px;
+  text-align: center;
 }
 
 .LiveSession-Main-Body {
