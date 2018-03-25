@@ -11,6 +11,9 @@
 .Session-Title {
   width: 33%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Session-Description {
