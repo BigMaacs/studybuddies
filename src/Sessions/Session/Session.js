@@ -5,12 +5,16 @@ import './Session.css';
 export default class Session extends PureComponent {
   static propTypes = {
     session: PropTypes.object,
+    history: PropTypes.object,
   }
 
   static defaultProp = {
     session: {},
   }
 
+  handleViewClick = () => {
+    this.props.history.push(`/session/:${this.props.session.id}`)
+  }
   renderActions() {
     const { saved, live } = this.props.session
     return (
@@ -22,7 +26,7 @@ export default class Session extends PureComponent {
           <button className="Session-actionButton">Remove</button>
         }
         { !live &&
-          <button className="Session-actionButton">View</button>
+          <button className="Session-actionButton" onClick={this.handleViewClick}>View</button>
         }
       </div>
     )
