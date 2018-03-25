@@ -13,6 +13,8 @@
     "ajv": "^6.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-materialize": "^2.1.2",
+    "react-router-dom": "^4.2.2",
     "react-dropdown": "^1.4.0"
   },
   "scripts": {
