@@ -5,7 +5,7 @@ import './Session.css';
 export default class Session extends PureComponent {
   static propTypes = {
     session: PropTypes.object,
-    history: PropTypes.object,
+    history: PropTypes.object,  
   }
 
   static defaultProp = {
@@ -25,15 +25,15 @@ export default class Session extends PureComponent {
     return (
       <div className="Session-Actions">
         { !saved &&
-          <button
-            className="Session-actionButton"
+          <button 
+            className="Session-actionButton" 
             onClick={this.handleSaveToggle}
           >
             Save
           </button>
         }
         { saved &&
-          <button
+          <button 
             className="Session-actionButton"
             onClick={this.handleRemoveToggle}
           >
@@ -41,8 +41,8 @@ export default class Session extends PureComponent {
           </button>
         }
         { live &&
-          <button
-            className="Session-actionButton"
+          <button 
+            className="Session-actionButton" 
             onClick={this.handleViewClick}
           >
             Join Session
@@ -54,16 +54,19 @@ export default class Session extends PureComponent {
 
   render() {
     const { session } = this.props
-
     return (
       <div className="Session-Container">
-        <div className="Session-Title">{ session.title } </div>
+        <div className="Session-Title">
+          <span>{ session.title }</span>
+          <span>Presented by:</span>
+          <span>{session.author_user.name}</span>
+        </div>
         <div className="Session-Description">
           <div className="Session-Description-Category">
-            {session.category}
+            {session.session_subject_categories[0].subject_category.name}
           </div>
           <div className="Session-Description-Text">
-            {session.description}
+            {session.description} 
           </div>
         </div>
         { this.renderActions() }

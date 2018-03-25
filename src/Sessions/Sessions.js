@@ -31,8 +31,6 @@ class Sessions extends PureComponent {
     return sessionsList.filter((session) => iWant.includes(session.category)).map((sess, i) => {
       return <Session key={i} session={sess} history={history}/>
     })
-    return sessionsList.map((session, i) => <Session key={i} session={session} history={history} /> )
-
   }
   render() {
     return (
