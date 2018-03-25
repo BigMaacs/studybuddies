@@ -13,7 +13,7 @@ class SignupForm extends Component {
       iKnowInput: '',
       iWantInput: '',
       iKnowList: [],
-      iWantList: []
+      iWantList: [],
     }
   }
 
