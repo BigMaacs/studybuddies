@@ -9,37 +9,24 @@ export default class ToggleViews extends Component {
       LiveSessions: false,
       MySessions: false,
     }
-    this.onAllSessionsClick = this.onAllSessionsClick.bind(this)
-    this.onLiveSessionsClick = this.onLiveSessionsClick.bind(this)
-    this.onMySessionsClick = this.onMySessionsClick.bind(this)
-    this.filter = this.filter.bind(this)
   }
 
-  onAllSessionsClick() {
-    this.setState({
-      AllSessions: true,
-      LiveSessions: false,
-      MySessions: false,
-    })
-  }
-
-  onLiveSessionsClick() {
-    this.setState({
-      AllSessions: false,
-      LiveSessions: true,
-      MySessions: false,
-    })
-  }
-
-  onMySessionsClick() {
-    this.setState({
+  onSessionClick = (session) => {
+    const newState = {
       AllSessions: false,
       LiveSessions: false,
-      MySessions: true,
-    })
+      MySessions: false
+    } 
+    newState[session] = true 
+    this.setState({ ...newState }) 
   }
 
-  filter() {
+  getClassname = (session) => {
+    console.log(this.state[session])
+    return this.state[session] ? 'Toggle-Menu-Item-Checked' : 'Toggle-Menu-Item'
+  }
+
+  filter = () => {
     // render new fitered sessions
   }
 
@@ -47,41 +34,22 @@ export default class ToggleViews extends Component {
     return (
       <div className="Toggle-Container">
         <div 
-          className="Toggle-Menu-Item" 
-          onClick={this.onAllSessionsClick}
+          className={this.getClassname('AllSessions')} 
+          onClick={(e) => this.onSessionClick(e.target.id)}
         >
-          <input
-            type="radio" 
-            name="tabs" 
-            checked={this.state.AllSessions}
-            onChange={this.filter}
-          />
-          <label>All Sessions</label>
+          <label id={'AllSessions'}>All Sessions</label>
         </div>
         <div 
-          className="Toggle-Menu-Item" 
-          onClick={this.onLiveSessionsClick}
+          className={this.getClassname('LiveSessions')} 
+          onClick={(e) => this.onSessionClick(e.target.id)}
         >
-          <input
-            type="radio" 
-            name="tabs"
-            checked={this.state.LiveSessions}
-            onChange={this.filter}
-          />
-          <label>Live Sessions</label>
+          <label id={'LiveSessions'}>Live Sessions</label>
         </div>
         <div 
-          className="Toggle-Menu-Item" 
-          onClick={this.onMySessionsClick}
+          className={this.getClassname('MySessions')} 
+          onClick={(e) => this.onSessionClick(e.target.id)}
         >
-          <input 
-            className="Toggle-Menu-Item" 
-            type="radio" 
-            name="tabs"
-            checked={this.state.MySessions}
-            onChange={this.filter}
-          />
-          <label>My Sessions</label>
+          <label id={'MySessions'}>My Sessions</label>
         </div>
       </div>
     )
