@@ -1,0 +1,11 @@
+.Toggle-Container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border: solid 1px;
+}
+
+.Toggle-Menu-Item {
+  padding: 10px;
+  width: 33%;
+}
