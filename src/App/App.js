@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import Layout from '../Layout'
 import SignupPage from '../SignupPage'
 import LiveSession from '../LiveSession'
+import SignupPage from '../SignupPage';
 import './NavBar.css'
-
 
 class App extends Component {
   render() {
@@ -28,7 +28,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={SignupPage} />
             <Route exact path="/dashboard" component={Layout} />
-            <Route excat path="/session/:id" component={LiveSession} />
+            <Route exact path="/session/:id" component={LiveSession} />
           </Switch>
         </div>
       </Router>

@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
+import { graphql, Query } from 'react-apollo'
 import Session from './Session/Session'
+import { 
+  QUERY_ALL_SESSIONS,
+  QUERY_SESSION_BY_CATEGORY,
+} from './queries'
 import './Sessions.css';
 
 class Sessions extends PureComponent {
@@ -9,6 +14,8 @@ class Sessions extends PureComponent {
     selected: PropTypes.string,
     sessions: PropTypes.array.isRequired,
     history: PropTypes.object,
+    data: PropTypes.object,
+    selectedCategory: PropTypes.object,
   }
 
   static defaultProp = {
@@ -32,13 +39,49 @@ class Sessions extends PureComponent {
       return <Session key={i} session={sess} history={history}/>
     })
   }
+
+  get queryProps() {
+    const { selectedCategory } = this.props
+    let queryProps = {
+      query: selectedCategory ?
+        QUERY_SESSION_BY_CATEGORY:
+        QUERY_ALL_SESSIONS
+    }
+
+    if (selectedCategory) {
+      queryProps.variables = {
+        categoryId: selectedCategory.id
+      }
+    }
+
+    return queryProps
+  }
+
+  reRenderSession({loading, error, data}) {
+    if (loading) {
+      return <p>Loading...</p>
+    } else if (error) {
+      return <p>Error loading sessions: {error.message}</p>
+    } 
+
+    return data.session.map((s, i) => (<Session key={i} session={s} />))
+  }
+
   render() {
     return (
       <div className="Sessions-Container">
-        { this.renderSession() }
+        <Query
+          {...this.queryProps}
+        >
+          { this.reRenderSession }
+        </Query>
       </div>
     )
   }
 }
 
-export default connect(({ sessions, user }) => ({ sessions, user }))(Sessions);
+// <<<<<<< HEAD
+// export default connect(({ sessions, user }) => ({ sessions, user }))(Sessions);
+// =======
+export default Sessions
+// >>>>>>> Got graphql filter queries to work

@@ -1,1 +1,2 @@
-export { default } from './Sessions'
+export { default as Sessions, SessionList } from './Sessions'
+// export { SessionList } from './Sessions'
