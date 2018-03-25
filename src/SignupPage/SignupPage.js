@@ -1,18 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import SignupForm from '../SignupForm';
 import { Navbar, NavItem } from 'react-materialize'
 
-const SignupPage = () => {
+const SignupPage = ({ history, user }) => {
+  if (user.loggedIn) {
+    history.push('/dashboard');
+  }
   return (
     <div>
       <Navbar brand='Studybuddies' right>
-        <NavItem href='get-started.html'>Dashboard</NavItem>
-        <NavItem href='components.html'>Login</NavItem>
+        <NavItem>Dashboard</NavItem>
+        <NavItem>Login</NavItem>
       </Navbar>
-      <SignupForm>
-      </SignupForm>
+      <SignupForm/>
     </div>
   )
 }
 
-export default SignupPage;
+export default connect(({ user }) => ({
+  user
+}))(SignupPage);

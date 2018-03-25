@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Row, Input, Autocomplete, Collection, CollectionItem, Col, Button} from 'react-materialize';
+import { AUTOCOMPLETE } from '../constants';
 import './SignupForm.css';
 
 class SignupForm extends Component {
@@ -19,7 +20,6 @@ class SignupForm extends Component {
 
   onChange = (e) => {
     const {value, id} = e.target;
-    console.log(console.log(value, 'val', id, 'id'));
     this.setState({[id]: value});
   }
 
@@ -77,12 +77,7 @@ class SignupForm extends Component {
               title='What I know'
               id='iKnowInput'
               className="auto-input"
-              data={{
-                'React': null,
-                'Redux': null,
-                'Angular': null,
-                'Vue': null
-              }}
+              data={AUTOCOMPLETE}
               onAutocomplete={(val) => this.selectIknow(val)}
               value={iKnowInput}
               onChange={this.onChange}
@@ -92,12 +87,7 @@ class SignupForm extends Component {
               title='What I want to learn'
               id='iWantInput'
               className="auto-input"
-              data={{
-                'React': null,
-                'Redux': null,
-                'Angular': null,
-                'Vue': null
-              }}
+              data={AUTOCOMPLETE}
               onAutocomplete={(val) => this.selectIWant(val)}
               value={iWantInput}
               onChange={this.onChange}
