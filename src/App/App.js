@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Navbar, NavItem } from 'react-materialize'
 import Layout from '../Layout'
 import SignupPage from '../SignupPage';
-import './App.css';
 
 
 export default class App extends Component {
@@ -10,7 +10,10 @@ export default class App extends Component {
     return (
       <Router>
         <div className="App">
-
+          <Navbar brand='Studybuddies' right>
+            <NavItem href='/dashboard'>Dashboard</NavItem>
+            <NavItem href='/'>Login</NavItem>
+          </Navbar>
           <Switch>
             <Route exact path="/" component={SignupPage} />
             <Route exact path="/dashboard" component={Layout} />

@@ -32,4 +32,19 @@
 .Session-Actions {
   width: 33%;
   padding: 20px;
+  justify-content: space-between;
+}
+
+.Session-actionButton {
+  width: 55px;
+  height: 25px;
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+  margin: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.Session-actionButton:focus {
+  background-color: #86151a;
 }

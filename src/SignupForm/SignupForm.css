@@ -17,3 +17,7 @@
 .auto-input {
   width: 33%;
 }
+
+.input {
+  display: inline;
+}

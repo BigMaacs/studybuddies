@@ -12,8 +12,19 @@ export default class Session extends PureComponent {
   }
 
   renderActions() {
+    const { saved, live } = this.props.session
     return (
-      <div>Save, View</div>
+      <div className="Session-Actions">
+        { !saved &&
+          <button className="Session-actionButton">Save</button>
+        }
+        { saved &&
+          <button className="Session-actionButton">Remove</button>
+        }
+        { !live &&
+          <button className="Session-actionButton">View</button>
+        }
+      </div>
     )
   }
 
@@ -31,7 +42,7 @@ export default class Session extends PureComponent {
             {session.description} 
           </div>
         </div>
-        <div className="Session-Actions">{ this.renderActions() } </div>
+        { this.renderActions() }
       </div>
     )
   }
