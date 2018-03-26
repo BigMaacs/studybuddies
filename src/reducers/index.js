@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import { ApolloClient } from 'react-apollo'
 import user from './user';
 import sessions from './sessions';
+import { buildClient } from '../apolloFactory'
 
-
-const client = new ApolloClient();
+const client = buildClient()
 
 const rootReducer = combineReducers({
   user,

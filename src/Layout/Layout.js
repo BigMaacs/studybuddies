@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import ToggleViews from '../ToggleViews'
 import Filter from '../Filter'
-import {Sessions} from '../Sessions'
+import { Sessions } from '../Sessions'
 import './Layout.css';
 
 export default class Layout extends PureComponent {
@@ -33,7 +33,7 @@ export default class Layout extends PureComponent {
           <Filter onChange={this.handleCategoryChange} />
           <Sessions
             history={this.props.history}
-            selectedCategory={this.state.selectedCategory} 
+            selectedCategory={selectedCategory}
           />
         </div>
       </div>
